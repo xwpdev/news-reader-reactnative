@@ -19,13 +19,13 @@ export default class TabsExample extends Component {
         </Header> */}
 
 				<Tabs>
-					<Tab heading="Tab1">
+					<Tab heading="Genaral">
 						<Tab1 />
 					</Tab>
-					<Tab heading="Tab2">
+					<Tab heading="Business">
 						<Tab2 />
 					</Tab>
-					<Tab heading="Tab3">
+					<Tab heading="Tech">
 						<Tab3 />
 					</Tab>
 				</Tabs>

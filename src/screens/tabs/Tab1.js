@@ -4,32 +4,48 @@ import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body
 import { getArticles } from '../service/news';
 import DataItem from '../components/dataItem';
 
-
 export default class ListThumbnailExample extends Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			isLoading: true,
-			data: null
-		}
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {
+	// 		isLoading: true,
+	// 		data: null
+	// 	}
+	// }
+
+	state = {
+		isLoading: false,
+		data: null,
 	}
 
-	componentDidMount() {
-		getArticles().then(
-			data => {
-				this.setState({
-					isLoading: false,
-					data: data
-				})
-			}, error => {
-				Alert.alert('Error', 'Something went wrong')
-			}
-		)
+	// componentDidMount() {
+	// 	getArticles().then(
+	// 		data => {
+	// 			this.setState({
+	// 				isLoading: false,
+	// 				data: data
+	// 			})
+	// 		}, error => {
+	// 			Alert.alert('Error', 'Something went wrong')
+	// 		}
+	// 	)
+	// }
+
+
+	async componentDidMount() {
+		const articles = await getArticles();
+		this.setState({
+			isLoading: false,
+			data: articles,
+		});
+		console.log("------------------------------------------------------")
+		console.log(articles)
 	}
 
 	render() {
-		console.log(this.state.data);
+		// console.log(this.state);
+		if (this.state.data) console.log(this.state.data);
 
 		let view = this.state.isLoading ? (
 			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
